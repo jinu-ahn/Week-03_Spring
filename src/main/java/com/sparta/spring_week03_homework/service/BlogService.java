@@ -22,13 +22,4 @@ public class BlogService {
         blog.update(requestDto);
         return id;
     }
-
-    @Transactional
-    public Long getblog_id(Long id, BlogRequestDto requestDto) {
-        Blog blog = blogRepository.findById(id).orElseThrow(
-                () -> new NullPointerException("아이디가 없습니다.")
-        );
-        blog.getblog_id(requestDto);
-        return id;
-    }
 }

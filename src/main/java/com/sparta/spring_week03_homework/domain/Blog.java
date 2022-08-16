@@ -42,13 +42,6 @@ public class Blog {
         this.comment = requestDto.getComment();
     }
 
-    public void getblog_id(BlogRequestDto requestDto){
-        this.name = requestDto.getName();
-        this.title = requestDto.getTitle();
-        this.comment = requestDto.getComment();
-        this.password = requestDto.getPassword();
-    }
-
 
     public void Checkpassword(PasswordRequestDto requestDto){
         this.password = requestDto.getPassword();
