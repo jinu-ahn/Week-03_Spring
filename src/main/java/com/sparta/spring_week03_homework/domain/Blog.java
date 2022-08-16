@@ -37,9 +37,29 @@ public class Blog {
         this.password = requestDto.getPassword();
     }
     public void update(BlogRequestDto requestDto){
-        this.name = requestDto.getName();
-        this.title = requestDto.getTitle();
-        this.comment = requestDto.getComment();
+        if(requestDto.getName().equals("") && requestDto.getTitle().equals(""))
+            this.comment = requestDto.getComment();
+        else if(requestDto.getName().equals("") && requestDto.getComment().equals(""))
+            this.title = requestDto.getTitle();
+        else if(requestDto.getTitle().equals("") && requestDto.getComment().equals(""))
+            this.name = requestDto.getName();
+        else if(requestDto.getName().equals("")){
+            this.title = requestDto.getTitle();
+            this.comment = requestDto.getComment();
+        }
+        else if(requestDto.getTitle().equals("")){
+            this.name = requestDto.getName();
+            this.comment = requestDto.getComment();
+        }
+        else if(requestDto.getComment().equals("")){
+            this.name = requestDto.getName();
+            this.title = requestDto.getTitle();
+        }
+        else {
+            this.name = requestDto.getName();
+            this.title = requestDto.getTitle();
+            this.comment = requestDto.getComment();
+        }
     }
 
 

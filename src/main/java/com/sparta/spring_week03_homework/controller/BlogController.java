@@ -1,10 +1,8 @@
 package com.sparta.spring_week03_homework.controller;
 
-import com.sparta.spring_week03_homework.domain.Blog;
-import com.sparta.spring_week03_homework.domain.BlogRepository;
-import com.sparta.spring_week03_homework.domain.BlogRequestDto;
-import com.sparta.spring_week03_homework.domain.PasswordRequestDto;
+import com.sparta.spring_week03_homework.domain.*;
 import com.sparta.spring_week03_homework.service.BlogService;
+import com.sun.istack.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,6 +29,7 @@ public class BlogController {
         Blog blog = new Blog(requestDto);
         return blogRepository.save(blog);
     }
+
     @PatchMapping("api/blogs/{id}")
     public Long update(@PathVariable Long id , @RequestBody BlogRequestDto requestDto){
         return blogService.update(id,requestDto);

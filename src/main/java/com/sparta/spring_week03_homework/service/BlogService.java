@@ -4,6 +4,7 @@ package com.sparta.spring_week03_homework.service;
 import com.sparta.spring_week03_homework.domain.Blog;
 import com.sparta.spring_week03_homework.domain.BlogRepository;
 import com.sparta.spring_week03_homework.domain.BlogRequestDto;
+import com.sparta.spring_week03_homework.domain.PasswordRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
