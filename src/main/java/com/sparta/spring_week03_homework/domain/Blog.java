@@ -1,6 +1,7 @@
 package com.sparta.spring_week03_homework.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -26,6 +27,7 @@ public class Blog {
 
 
     @Column(nullable = false)
+    @JsonIgnore
     private String password;
 
     public Blog(BlogRequestDto requestDto){
@@ -38,7 +40,6 @@ public class Blog {
         this.name = requestDto.getName();
         this.title = requestDto.getTitle();
         this.comment = requestDto.getComment();
-        this.password = requestDto.getPassword();
     }
 
     public void getblog_id(BlogRequestDto requestDto){

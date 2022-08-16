@@ -5,10 +5,7 @@ import com.sparta.spring_week03_homework.domain.BlogRepository;
 import com.sparta.spring_week03_homework.domain.BlogRequestDto;
 import com.sparta.spring_week03_homework.service.BlogService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,7 +21,13 @@ public class BlogController {
         return blogRepository.findAll();
     }
     @GetMapping("api/blogs/{id}")
-    public List<Blog> getblog_id(@PathVariable Long id) {
+    // Optional : NullPointExeption(NPE) 을 방지해준다.
+    public Optional<Blog> getblog_id(@PathVariable Long id) {
         return blogRepository.findById(id);
+    }
+    @PostMapping("api/blogs")
+    public Blog createblog(@RequestBody BlogRequestDto requestDto) {
+        Blog blog = new Blog(requestDto);
+        return blogRepository.save(blog);
     }
 }
