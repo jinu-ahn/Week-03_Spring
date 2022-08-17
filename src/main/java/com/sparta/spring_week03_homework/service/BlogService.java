@@ -1,10 +1,7 @@
 package com.sparta.spring_week03_homework.service;
 
 
-import com.sparta.spring_week03_homework.domain.Blog;
-import com.sparta.spring_week03_homework.domain.BlogRepository;
-import com.sparta.spring_week03_homework.domain.BlogRequestDto;
-import com.sparta.spring_week03_homework.domain.PasswordRequestDto;
+import com.sparta.spring_week03_homework.domain.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +19,27 @@ public class BlogService {
         );
         blog.update(requestDto);
         return id;
+    }
+
+    @Transactional
+    public Boolean  check_pw(Long id, PasswordRequestDto pw_requestDto){
+        BlogRequestDto requestDto = new BlogRequestDto();
+        if(requestDto.getPassword().equals(pw_requestDto)) {
+            return true;
+        } else {
+            blogRepository.findById(id).orElseThrow(
+                    () -> new NullPointerException("해당 아이디가 존재하지 않습니다.")
+            );
+            return false;
+        }
+
+
+    }
+    @Transactional
+    public Get_IdRequestDto get_blog(Long id) {
+        Blog blog = blogRepository.findById(id).orElseThrow(
+                () -> new NullPointerException("해당 아이디가 존재하지 않습니다.")
+        );
+        return new Get_IdRequestDto(blog);
     }
 }
