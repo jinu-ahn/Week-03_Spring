@@ -10,12 +10,11 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Entity
-public class Blog {
+public class Blog extends Timestamped {
 
     @GeneratedValue (strategy = GenerationType.AUTO)
     @Id
     private Long id;
-
     @Column(nullable = false)
     private String name;
 
@@ -23,12 +22,17 @@ public class Blog {
     private String title;
 
     @Column(nullable = false)
+    @JsonIgnore
     private String comment;
 
 
     @Column(nullable = false)
     @JsonIgnore
     private String password;
+
+    @JsonIgnore
+    private String check_password;
+
 
     public Blog(BlogRequestDto requestDto){
         this.name = requestDto.getName();
@@ -55,7 +59,7 @@ public class Blog {
             this.name = requestDto.getName();
             this.title = requestDto.getTitle();
         }
-        else {
+        else{
             this.name = requestDto.getName();
             this.title = requestDto.getTitle();
             this.comment = requestDto.getComment();
@@ -63,8 +67,9 @@ public class Blog {
     }
 
 
-    public void Checkpassword(PasswordRequestDto requestDto){
-        this.password = requestDto.getPassword();
+    public Object Checkpassword(PasswordRequestDto requestDto){
+        this.check_password = requestDto.getPassword();
+        return check_password;
     }
 
 
