@@ -2,7 +2,6 @@ package com.sparta.spring_week03_homework.controller;
 
 import com.sparta.spring_week03_homework.domain.*;
 import com.sparta.spring_week03_homework.service.BlogService;
-import com.sun.istack.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,29 +13,34 @@ import java.util.Optional;
 public class BlogController {
     private final BlogRepository blogRepository;
     private final BlogService blogService;
+    private ResponseDto responseDto;
+
 
     @GetMapping("api/blogs")
-    public List<Blog> getblog(){
+    // Optional : NullPointExeption(NPE) 을 방지해준다.
+    public List<Blog> getblog() {
         return blogRepository.findAll();
     }
     @GetMapping("api/blogs/{id}")
-    // Optional : NullPointExeption(NPE) 을 방지해준다.
-    public Optional<Blog> getblog_id(@PathVariable Long id) {
-        return blogRepository.findById(id);
+    public Get_IdRequestDto getblog_id (@PathVariable Long id){
+        return blogService.get_blog(id);
     }
     @PostMapping("api/blogs")
     public Blog createblog(@RequestBody BlogRequestDto requestDto) {
         Blog blog = new Blog(requestDto);
         return blogRepository.save(blog);
     }
-
+    @PostMapping("api/blogs/{id}")
+    public Boolean pwcheck_blog(@PathVariable Long id, @RequestBody PasswordRequestDto requestDto){
+        return blogService.check_pw(id,requestDto);
+    }
     @PatchMapping("api/blogs/{id}")
     public Long update(@PathVariable Long id , @RequestBody BlogRequestDto requestDto){
         return blogService.update(id,requestDto);
     }
-    @DeleteMapping("api.blogs/{id}")
-    public Long deleteblog(@PathVariable Long id){
+    @DeleteMapping("api/blogs/{id}")
+    public ResponseDto deleteblog(@PathVariable Long id){
         blogRepository.deleteById(id);
-        return id;
+        return responseDto;
     }
 }
