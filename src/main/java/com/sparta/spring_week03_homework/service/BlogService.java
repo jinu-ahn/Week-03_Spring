@@ -22,12 +22,30 @@ public class BlogService {
     }
 
     @Transactional
+<<<<<<< HEAD
+=======
+    public Boolean  check_pw(Long id, PasswordRequestDto pw_requestDto){
+        BlogRequestDto requestDto = new BlogRequestDto();
+        if(requestDto.getPassword().equals(pw_requestDto)) {
+            return true;
+        } else {
+            blogRepository.findById(id).orElseThrow(
+                    () -> new NullPointerException("해당 아이디가 존재하지 않습니다.")
+            );
+            return false;
+        }
+
+
+    }
+    @Transactional
+>>>>>>> af0327ee93a2f3e6e41bc87e0b32ff97e3259b1b
     public Get_IdRequestDto get_blog(Long id) {
         Blog blog = blogRepository.findById(id).orElseThrow(
                 () -> new NullPointerException("해당 아이디가 존재하지 않습니다.")
         );
         return new Get_IdRequestDto(blog);
     }
+<<<<<<< HEAD
 
     @Transactional
     public String  check_pw(Long id, PasswordRequestDto pw_requestDto){
@@ -42,4 +60,7 @@ public class BlogService {
     }
 
 
+=======
+>>>>>>> af0327ee93a2f3e6e41bc87e0b32ff97e3259b1b
 }
+
