@@ -12,38 +12,17 @@
 
 **1.수정, 삭제 API의 request를 어떤 방식으로 사용하셨나요? (param, query, body)**
 
-=>body - JSON 방식
 
 **2.어떤 상황에 어떤 방식의 request를 써야하나요?**
 
-=> param :  id와 같이 식별가능한 변수를 활용해야 할 때
-   query :  &을 통해 여러 개의 데이터를 넘길수 있을 때 , 조건이 여러개인걸 조회할때, 최저가검색
-   body :  XML, JSON, Multi Form 등의 데이터를 담음, 기록된 많은 변수를 사용자가 뽑아 사용할 때
    
 **3.RESTful한 API를 설계했나요? 어떤 부분이 그런가요? 어떤 부분이 그렇지 않나요?**
 
-=><RESTful 의 기준>
-
-①Client–server 구조 : 클라이언트와 서버는 서로 독립적
-
-②Stateless(무상태성) : 클라이언트의 모든요청에는 해당요청을 이해할수 있는 모든 정보가 포함되어야 한다.
-
-③Cacheable : 해당 요청이 캐싱이 가능한지 여부를 제공해야한다
-
-④Uniform interface(일관된 인터페이스) : 보현적인 소프트웨어 엔지니어링 원칙을 적용
-
-⑤Layered system(다중 계층) : 다중계층을 가질수 있도록 허용
-
-⑥Code on demand (optional)  : 서버가 클라이언트에서 실행시킬 수 있는 로직을 전송하여 클라이언트의 기능을 확장 시킬 수 있다. 이를 통해 클라이언트가 사전에 구현해야 하는 기능의 수를 줄여 간소화 시킬수 있다
-
-=>1,2,4,5는 잘 한 것 같고 3,6은 몰라서 잘 못했던 것 같습니다.
 
 **4.적절한 관심사 분리를 적용하였나요? (Controller, Repository, Service)**
 
-=>  Controller에서 클라이언트에게 요청을 받으면 Sevice에서 직접 요청을 수행하며 이후 DB에서 정보를 Repository에게 주면, DB가 CRUD작업을 처리한다
-
 **5.작성한 코드에서 빈(Bean)을 모두 찾아보세요!**
 
-=>Controller ,Service, Repository
+
 
 
