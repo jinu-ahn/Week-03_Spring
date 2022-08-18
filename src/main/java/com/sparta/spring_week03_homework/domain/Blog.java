@@ -105,6 +105,7 @@ public class Blog extends Timestamped {
 
     public Object Checkpassword(PasswordRequestDto requestDto){
         this.check_password = requestDto.getCheck_password();
+        return check_password;
     }
 
 }
