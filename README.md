@@ -40,5 +40,6 @@ Packege를 통하여 Controller domain Service 3개의 패키지로 분리하였
 Contriller 내 HTTP 메서드들 , Repository , Service
 
 **6. API 명세서 작성 가이드라인을 검색하여 직접 작성한 명세서와 비교해보세요!**
+
 제가 작성한 API 명세서는 HTTP 요청에 의한 Method, URL, Request, Response만 보여주지만 가이드라인에서는 
 호출되는 URL 정보, 적용기술 , 요청변수, 반환값 등 좀 더 세부적으로 나누어 이 변수는 어떤 기능을 담당하는 변수며 어떠한 기능에서 사용한다 등 세부적으로 쪼개서 설명하고 있습니다. 다음에 API명세서를 작성할 때에는 해당 변수가 담당하는 내용도 같이 포함되면 좋을 것 같습니다.
