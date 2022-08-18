@@ -18,7 +18,6 @@ public class BlogController {
 
 
     @GetMapping("api/blogs")
-    // Optional : NullPointExeption(NPE) 을 방지해준다.
     public List<Blog> getblog() {
         return blogRepository.findAllByOrderByCreatedAtDesc();
     }
