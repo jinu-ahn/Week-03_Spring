@@ -103,19 +103,8 @@ public class Blog extends Timestamped {
         }
     }
 
-
-<<<<<<< HEAD
-
     public Object Checkpassword(PasswordRequestDto requestDto){
         this.check_password = requestDto.getCheck_password();
-=======
-    public Object Checkpassword(PasswordRequestDto requestDto){
-        this.check_password = requestDto.getPassword();
->>>>>>> af0327ee93a2f3e6e41bc87e0b32ff97e3259b1b
-        return check_password;
     }
-
-
-
 
 }
