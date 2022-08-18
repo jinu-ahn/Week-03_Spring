@@ -27,11 +27,6 @@ public class BlogController {
 
     }
 
-    @GetMapping("api/blogs/{id}")
-    public Get_IdRequestDto getblog_id(@PathVariable Long id) {
-        return blogService.get_blog(id);
-    }
-
     @PostMapping("api/blogs")
     public Blog createblog(@RequestBody BlogRequestDto requestDto) {
         Blog blog = new Blog(requestDto);
