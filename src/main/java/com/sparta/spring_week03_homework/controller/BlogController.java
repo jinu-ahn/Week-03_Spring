@@ -2,7 +2,6 @@ package com.sparta.spring_week03_homework.controller;
 
 import com.sparta.spring_week03_homework.domain.*;
 import com.sparta.spring_week03_homework.service.BlogService;
-import com.sun.istack.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,28 +14,38 @@ public class BlogController {
     private final BlogRepository blogRepository;
     private final BlogService blogService;
 
+
     @GetMapping("api/blogs")
-    public List<Blog> getblog(){
-        return blogRepository.findAll();
-    }
-    @GetMapping("api/blogs/{id}")
     // Optional : NullPointExeption(NPE) 을 방지해준다.
-    public Optional<Blog> getblog_id(@PathVariable Long id) {
-        return blogRepository.findById(id);
+    public List<Blog> getblog() {
+        return blogRepository.findAllByOrderByCreatedAtDesc();
     }
+
+    @GetMapping("api/blogs/{id}")
+    public Get_IdRequestDto getblog_id(@PathVariable Long id) {
+        return blogService.get_blog(id);
+    }
+
     @PostMapping("api/blogs")
     public Blog createblog(@RequestBody BlogRequestDto requestDto) {
         Blog blog = new Blog(requestDto);
         return blogRepository.save(blog);
     }
 
-    @PatchMapping("api/blogs/{id}")
-    public Long update(@PathVariable Long id , @RequestBody BlogRequestDto requestDto){
-        return blogService.update(id,requestDto);
+    @PostMapping("api/blogs/{id}")
+    public String pwcheck_blog(@PathVariable Long id, @RequestBody PasswordRequestDto requestDto) {
+        return blogService.check_pw(id, requestDto);
     }
-    @DeleteMapping("api.blogs/{id}")
-    public Long deleteblog(@PathVariable Long id){
+
+    @PatchMapping("api/blogs/{id}")
+    public String update(@PathVariable Long id, @RequestBody BlogRequestDto requestDto) {
+        return blogService.update(id, requestDto);
+    }
+
+    @DeleteMapping("api/blogs/{id}")
+    public String deleteblog(@PathVariable Long id) {
         blogRepository.deleteById(id);
-        return id;
+        return id + "번 게시물이 삭제되었습니다.";
     }
 }
+
