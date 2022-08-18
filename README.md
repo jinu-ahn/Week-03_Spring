@@ -11,23 +11,28 @@
 # ❓ **Why: 과제 제출시에는 아래 질문을 고민해보고 답변을 함께 제출해주세요.**
 
 **1.수정, 삭제 API의 request를 어떤 방식으로 사용하셨나요? (param, query, body)**
+
 @RequestBody를 사용하여 JSON 방식으로 데이터를 넘겨주었습니다.
 
 **2.어떤 상황에 어떤 방식의 request를 써야하나요?**
+
 param - 주소에 포함된 변수를 담습니다. 예를 들면 /api/blogs/{id}라고 url을 설정하였다면 {id}에 해당하는 값을 넘겨주는 역할을 합니다.
 query - 경로의 각 쿼리 문자열 매개 변수에 대한 속성이 포함됩니다. url에 ?뒤에 변수에 사용하며 &을 이용하여 추가할 수 있습니다. 저는 사용하지 않았지만 http://localhost:8080/api/search?query= 이라고 사용했으면 query 매개변수 =에 해당하는 값을 가져옵니다.
 body - 주로 JSON의 데이터를 담을 때 사용하며 XML,Multi Form등에도 사용됩니다. 주소창에서는 확인할 수 없으며 ARC에서 Body부분에 제출된 키-값 데이터 쌍을 포함합니다.
    
 **3.RESTful한 API를 설계했나요? 어떤 부분이 그런가요? 어떤 부분이 그렇지 않나요?**
+
 RESTful은 REST API를 제공하는 웹서비스를 RESTful이라고 알고 있는데,
 Controller에 HTTP메서드 GET , POST , PATCH(PUT) , DELETE 를 사용하여 GET을 요청하여 지정해놓은 URL을 통해 List값을 보여주도록 하였으며, POST를 통해 서버에 데이터를 전송하였고, PATCH를 통하여 데이터의 전체 또는 일부분을 수정할 수 있도록 하였습니다. DELETE메소드를 통하여 해당되는 id값을 데이터를 삭제하도록하는 메소드를 작성하였습니다.
 아직 RESTful한 API라는 용어의 이해가 낮아 그렇지 않은 부분은 어떤 곳인지 잘 모르겠습니다 ㅠ
 
 **4.적절한 관심사 분리를 적용하였나요? (Controller, Repository, Service)**
+
 Packege를 통하여 Controller domain Service 3개의 패키지로 분리하였으며, 그에 해당하는 클래스를 분리하여 사용하였습니다.
 
 
 **5.작성한 코드에서 빈(Bean)을 모두 찾아보세요!**
+
 Contriller 내 HTTP 메서드들 , Repository , Service
 
 
