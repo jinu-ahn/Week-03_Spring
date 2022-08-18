@@ -13,7 +13,7 @@ import java.util.Optional;
 public class BlogController {
     private final BlogRepository blogRepository;
     private final BlogService blogService;
-    private ResponseDto responseDto;
+   
 
 
 
