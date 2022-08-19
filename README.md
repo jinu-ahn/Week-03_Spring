@@ -39,7 +39,7 @@ Packege를 통하여 Controller domain Service 3개의 패키지로 분리하였
 
 **5.작성한 코드에서 빈(Bean)을 모두 찾아보세요!**
 
-Contriller 내 HTTP 메서드들 , Repository , Service
+Controller , Repository , Service
 
 **6. API 명세서 작성 가이드라인을 검색하여 직접 작성한 명세서와 비교해보세요!**
 
