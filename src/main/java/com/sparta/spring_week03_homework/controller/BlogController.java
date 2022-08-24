@@ -13,27 +13,18 @@ import java.util.Optional;
 public class BlogController {
     private final BlogRepository blogRepository;
     private final BlogService blogService;
-    private ResponseDto responseDto;
+   
 
 
 
     @GetMapping("api/blogs")
-    // Optional : NullPointExeption(NPE) 을 방지해준다.
     public List<Blog> getblog() {
-<<<<<<< HEAD
         return blogRepository.findAllByOrderByCreatedAtDesc();
-=======
-        return blogRepository.findAll();
     }
     @GetMapping("api/blogs/{id}")
     public Get_IdRequestDto getblog_id (@PathVariable Long id){
         return blogService.get_blog(id);
->>>>>>> af0327ee93a2f3e6e41bc87e0b32ff97e3259b1b
-    }
 
-    @GetMapping("api/blogs/{id}")
-    public Get_IdRequestDto getblog_id(@PathVariable Long id) {
-        return blogService.get_blog(id);
     }
 
     @PostMapping("api/blogs")
@@ -41,7 +32,6 @@ public class BlogController {
         Blog blog = new Blog(requestDto);
         return blogRepository.save(blog);
     }
-<<<<<<< HEAD
 
     @PostMapping("api/blogs/{id}")
     public String pwcheck_blog(@PathVariable Long id, @RequestBody PasswordRequestDto requestDto) {
@@ -57,20 +47,6 @@ public class BlogController {
     public String deleteblog(@PathVariable Long id) {
         blogRepository.deleteById(id);
         return id + "번 게시물이 삭제되었습니다.";
-=======
-    @PostMapping("api/blogs/{id}")
-    public Boolean pwcheck_blog(@PathVariable Long id, @RequestBody PasswordRequestDto requestDto){
-        return blogService.check_pw(id,requestDto);
-    }
-    @PatchMapping("api/blogs/{id}")
-    public Long update(@PathVariable Long id , @RequestBody BlogRequestDto requestDto){
-        return blogService.update(id,requestDto);
-    }
-    @DeleteMapping("api/blogs/{id}")
-    public ResponseDto deleteblog(@PathVariable Long id){
-        blogRepository.deleteById(id);
-        return responseDto;
->>>>>>> af0327ee93a2f3e6e41bc87e0b32ff97e3259b1b
     }
 }
 
