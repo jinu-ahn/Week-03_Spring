@@ -1,3 +1,7 @@
+#ERD
+![ERD](https://user-images.githubusercontent.com/66781422/186660075-ff268a2d-432e-4bf1-9076-ccbcf800349c.JPG)
+
+
 # 유즈케이스
 ![유즈케이스](https://user-images.githubusercontent.com/66781422/185340535-6fc11ffc-0dde-4d21-8c63-341abbf39460.jpg)
 
